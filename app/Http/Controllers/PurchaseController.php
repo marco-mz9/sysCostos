@@ -35,7 +35,7 @@ class PurchaseController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $this->validate($request, [
+        $this->validate($request, rules: [
             'date' => 'required|date_format:Y-m-d',
             'ruc' => 'required|max:13',
             'authorization' => 'required|max:15',

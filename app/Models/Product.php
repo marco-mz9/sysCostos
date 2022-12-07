@@ -13,11 +13,6 @@ class Product extends Model
 
     protected $fillable = ['product', 'price', 'state'];
 
-    public function details(): BelongsToMany
-    {
-        return $this->belongsToMany(Detail::class);
-    }
-
     public function orders(): BelongsToMany
     {
         return $this->belongsToMany(Order::class)->withPivot('quantity');

@@ -26,11 +26,7 @@ class ReportController extends Controller
             ->whereHas('purchase', function ($query) use ($dateStart, $dateEnd) {
                 $query->whereBetween('date', [$dateStart, $dateEnd]);
             })->whereRelation('detail.classification', 'name', 'like', $class)->get();
-        return view('reports.report', compact('reports',));
+        return view('reports.report', compact('reports'));
     }
 
-    public function export()
-    {
-        return Excel::download(new InvoicesExport, 'invoices.xlsx');
-    }
 }

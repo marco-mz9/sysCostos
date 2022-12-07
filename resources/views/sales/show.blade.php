@@ -11,7 +11,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                       d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                             </svg>
-                            <label> Atras</label>
+                            <label> Atrás</label>
                         </a>
                         <div class="d-flex justify-content-end mb-4">
                             <a class="btn btn-primary" href="{{route('sales.pdfOrder',$orders->id)}}">
@@ -58,26 +58,6 @@
                             <p>
                                 @foreach($orders->products as $item)
                                     {{ $item->pivot->quantity }}
-                                @endforeach
-                            </p>
-                        </div>
-                        <div class="w-full px-2 md:w-1/4 sm:w-1/2">
-                            <label class="block mb-1" for="formInput_dateEnd"> Detalle</label>
-                            <p>
-                                @foreach($orders->products as $item)
-                                    @foreach($item->details as $value)
-                                        {{ $value->detail }}
-                                    @endforeach
-                                @endforeach
-                            </p>
-                        </div>
-                        <div class="w-full px-2 md:w-1/4 sm:w-1/2">
-                            <label class="block mb-1" for="formInput_dateEnd"> Clasificación</label>
-                            <p>
-                                @foreach($orders->products as $item)
-                                    @foreach($item->details as $value)
-                                        {{ $value->classification->name}}
-                                    @endforeach
                                 @endforeach
                             </p>
                         </div>

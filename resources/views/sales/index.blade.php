@@ -7,7 +7,7 @@
                         <a href="{{ route('sales.create') }}"
                            class="items-center text-white  py-1 px-4 w-auto bg-gray-500 hover:bg-gray-700 rounded-full active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none bg-blue-500 hover:bg-blue-700">
                             <i class="fas fa-cash-register"></i>
-                            Crear Orden
+                            Crear Pedido
                         </a>
                     </div>
                     <div class="flex flex-col">
@@ -58,11 +58,11 @@
                                             </th>
                                             <th scope="col"
                                                 class="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Precio Total
+                                                Precio Unitario Acordado
                                             </th>
                                             <th scope="col"
                                                 class="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Detalle
+                                                Precio Total
                                             </th>
                                             <th scope="col"
                                                 class="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -115,20 +115,18 @@
                                                 </td>
                                                 <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">
                                                     <div class="text-sm text-center leading-5 text-gray-500">
+                                                        @foreach($order->products as $item)
+                                                            {{ $item->price }}
+                                                        @endforeach
+                                                    </div>
+                                                </td>
+                                                <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">
+                                                    <div class="text-sm text-center leading-5 text-gray-500">
                                                         <ul>
                                                             @foreach($order->products as $item)
                                                                 ${{ $item->pivot->total_price }}
                                                             @endforeach
                                                         </ul>
-                                                    </div>
-                                                </td>
-                                                <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">
-                                                    <div class="text-sm  text-left leading-5 text-gray-500">
-                                                        @foreach($order->products as $item)
-                                                            @foreach($item->details as $value)
-                                                                <li>{{ $value->detail }}</li>
-                                                            @endforeach
-                                                        @endforeach
                                                     </div>
                                                 </td>
                                                 <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">
@@ -146,9 +144,10 @@
                                                         {{$order->sale->id}}
                                                     </div>
                                                 </td>
-                                                {{--                                                    <td class="text-right">--}}
-                                                {{--                                                        <a href="{{route('sales.show',$order->id)}}" class="btn btn-default btn-sm">Mostrar</a>--}}
-                                                {{--                                                    </td>--}}
+                                                <td class="text-right">
+                                                    <a href="{{route('sales.show',$order->id)}}"
+                                                       class="btn btn-default btn-sm">Mostrar</a>
+                                                </td>
                                             </tr>
                                         @endforeach
                                         </tbody>

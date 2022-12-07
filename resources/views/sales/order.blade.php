@@ -42,13 +42,6 @@
             function onSelectOrderChange() {
                 let id = $(this).val();
                 $.get('/api/fetch-products/' + id + '/products', function (data) {
-                    let detail = '';
-                    let classification = '';
-                    const numbers = data.products[0].details;
-                    numbers.forEach((number, index) => {
-                        detail += (Number(index) + 1) + '  : ' + number.detail + '\n';
-                        classification += (Number(index) + 1) + '  : ' + number.classification.name + '\n';
-                    });
                     let html_product = '' +
                         '<div class="w-full px-2 md:w-1/5 sm:w-1/2" >' +
                         '<label class="block mb-1" for="product">Orden de Porducción</label>' +
@@ -74,18 +67,6 @@
                         '<div class="w-full px-2 md:w-1/6 sm:w-1/2" >' +
                         '<label class="block mb-1" for="product">Pedido</label>' +
                         '<input  type="text" value="' + data.sale.id + '" class="w-full h-10 px-3 text-base border rounded-lg focus:shadow-outline" disabled>' +
-                        '</div>' +
-                        '<div class="w-full px-2 md:w-1/6 sm:w-1/2" >' +
-                        '<label class="block mb-1" for="product">Detalles</label>' +
-                        '<textare  class=" block pt-2 w-full h-10 px-3 text-base border border-black rounded-lg focus:shadow-outline">' +
-                        '' + detail + '' +
-                        '</textare>' +
-                        '</div>' +
-                        '<div class="w-full px-2 md:w-1/6 sm:w-1/2" >' +
-                        '<label class="block mb-1" for="product">Clasificación</label>' +
-                        '<textare  class=" block pt-2 w-full h-10 px-3 text-base border border-black rounded-lg focus:shadow-outline">' +
-                        '' + classification + '' +
-                        '</textare>' +
                         '</div>' +
                         '<div class="w-full px-2 md:w-1/6 sm:w-1/2" >' +
                         '<label class="block mb-1" for="product">Cantidad</label>' +

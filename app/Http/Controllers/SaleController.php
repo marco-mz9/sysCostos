@@ -23,7 +23,7 @@ class SaleController extends Controller
 {
     public function index(): Factory|View|Application
     {
-        $orders = Order::with('products.details', 'client', 'sale')->paginate(6);
+        $orders = Order::with('products', 'client', 'sale')->paginate(6);
         return view('sales.index', compact('orders'));
     }
 
@@ -41,7 +41,7 @@ class SaleController extends Controller
 
     public function fetchProduct($id): Model|Collection|Builder|array|null
     {
-        return Order::with('products.details.classification', 'client', 'sale')->findOrFail($id);
+        return Order::with('products', 'client', 'sale')->findOrFail($id);
     }
 
     /**
@@ -55,7 +55,7 @@ class SaleController extends Controller
             'date_start' => 'required|date_format:Y-m-d',
             'date_end' => 'required|date_format:Y-m-d',
             'products.*.product' => 'required',
-            'products.*.details' => 'required',
+            'products.*.price' => 'required',
             'products.*.quantity' => 'required|numeric',
         ]);
 
@@ -66,43 +66,25 @@ class SaleController extends Controller
         $data['client_id'] = $cliente->id;
         $data['sale_id'] = $sale->id;
 
-        foreach ($request->products as $key => $value) {
+        foreach ($request->products as $value) {
             $order = Order::create($data);
-
-
-            $val = [];
-            $det = $value['details'];
-            foreach ($det as $key => $d) {
-                $details[$key] = Detail::find($d);
-                $val[$key] = $details[$key]['unit_value'];
-            }
-
-            $valor = array_sum($val);
-
             $value['state'] = 1;
-            $value['price'] = $valor;
             $product = Product::create($value);
-
-
-            $value['total_price'] = $value['quantity'] * $valor;
+            $value['total_price'] = $value['quantity'] * $value['price'];
             $order->products()->attach($product->id, ['quantity' => $value['quantity'], 'total_price' => $value['total_price']]);
-            $product->details()->attach($value['details']);
         }
-//        return $product;
-//        return $valor;
         return redirect()->route('sales.index')->with('status', 'Ordenes Creadas Correctamente');
     }
 
     public function show($id): Factory|View|Application
     {
-        $orders = Order::with('products.details.classification')->findOrFail($id);
+        $orders = Order::with('products')->findOrFail($id);
         return view('sales.show', compact('orders'));
     }
 
     public function pdfOrder($id): Response
     {
         $orders = Order::with('products')->findOrFail($id);
-        $pdf = PDF::loadView('sales.pdfShow', compact('orders'));
-        return $pdf->download('sale.pdf');
+        return PDF::loadView('sales.pdfShow', compact('orders'))->download('sale.pdf');
     }
 }

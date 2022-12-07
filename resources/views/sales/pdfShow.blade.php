@@ -1,67 +1,4 @@
-{{--
-
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-
-hola soy tu padre
-<div class="py-12">
-    <div class="max-w-screen-2xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            <div class="p-6 bg-white border-b border-gray-200">
-                <div class="flex flex-wrap mx-5 space-y-4 md:space-y-0">
-                    <div class="w-full px-2 md:w-1/4">
-                        <label class="block mb-1" for="formInput_client_name">Orden</label>
-                        <p>{{$orders->id}}</p>
-                    </div>
-                    <div class="w-full px-2 md:w-1/4">
-                        <label class="block mb-1" for="formInput_client_name">Cliente</label>
-
-                        <p>{{$orders->client->name}}</p>
-                    </div>
-                    <div class="w-full px-2 md:w-1/4 sm:w-1/2">
-                        <label class="block mb-1" for="formInput_ruc">RUC</label>
-                        <p>{{$orders->client->ruc}}</p>
-                    </div>
-                    <div class="w-full px-2 md:w-1/4 sm:w-1/2">
-                        <label class="block mb-1" for="formInput_dateStart"> Fecha Inicio</label>
-                        <p>{{$orders->date_start}}</p>
-                    </div>
-                    <div class="w-full px-2 md:w-1/4 sm:w-1/2">
-                        <label class="block mb-1" for="formInput_dateEnd"> Fecha Fin</label>
-                        <p>{{$orders->date_end}}</p>
-                    </div>
-                    <div class="w-full px-2 md:w-1/4 sm:w-1/2">
-                        <label class="block mb-1" for="formInput_dateEnd"> Pedido</label>
-                        <p>{{$orders->sale->id}}</p>
-                    </div>
-                    <div class="w-full px-2 md:w-1/4 sm:w-1/2">
-                        <label class="block mb-1" for="formInput_dateEnd">Detalle</label>
-                        <p>
-                            @foreach($orders->products as $item)
-                                {{ $item->product }}
-                            @endforeach
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-</body>
-</html>
---}}
-
-
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -144,11 +81,6 @@ hola soy tu padre
             }
         }
 
-        /** RTL **/
-        .invoice-box.rtl {
-            direction: rtl;
-            font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
-        }
 
         .invoice-box.rtl table {
             text-align: right;
@@ -158,18 +90,19 @@ hola soy tu padre
             text-align: left;
         }
     </style>
+    <title></title>
 </head>
 
 <body>
 <div class="invoice-box">
-    <table cellpadding="0" cellspacing="0">
+    <table>
         <tr class="top">
             <td colspan="2">
                 <table>
                     <tr>
                         <td class="title">
                             <img src="{{ env('APP_URL') }}/resources/views/images/EPS_logo.png"
-                                 style="width: 100%; max-width: 300px"/>
+                                 style="width: 100%; max-width: 300px" alt=""/>
                         </td>
 
                         <td>

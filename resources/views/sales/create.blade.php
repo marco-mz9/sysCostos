@@ -76,7 +76,7 @@
                                                 </th>
                                                 <th scope="col"
                                                     class="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                    Detalles
+                                                    Precio Unitario Acordado
                                                 </th>
                                                 <th scope="col"
                                                     class="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
@@ -92,18 +92,9 @@
                                                     <input type="text" name="products[0][product]"
                                                            class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"/>
                                                 </td>
-                                                <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">
-                                                    <select
-                                                        class="select2-multiple  w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline"
-                                                        name="products[0][details][]" id="formInput_class"
-                                                        multiple="multiple" style="width: 100%">
-                                                        {{--                                                            <option value="option_select" disabled selected>  </option>--}}
-                                                        @foreach($details as $item)
-                                                            <option value="{{ $item->id }}">
-                                                                {{ $item->detail }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
+                                                <td class=" px-4 py-2  whitespace-no-wrap border-b border-gray-200">
+                                                    <input type="number" name="products[0][price]"
+                                                           class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"/>
                                                 </td>
                                             </tr>
                                             </tbody>
@@ -168,13 +159,9 @@
                         '<input type="text" class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" ' +
                         'name="products[' + i + '][product]" />' +
                         '</td>' +
-                        '<td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200"> ' +
-                        '<select class="select2-multiple w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline"' +
-                        'name="products[' + i + '][details][]"  multiple="multiple" style="width: 100%">' +
-                        '@foreach($details as $item)' +
-                        '<option value="{{ $item->id }}" >{{  $item->detail }}</option>' +
-                        ' @endforeach' +
-                        '</select>' +
+                        '<td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">' +
+                        '<input type="number" class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" ' +
+                        'name="products[' + i + '][price]" />' +
                         '</td>' +
                         '<td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200" >' +
                         '<svg class="h-8 w-8 text-red-500 remove_sale"  fill="none" viewBox="0 0 24 24" stroke="currentColor">' +
@@ -196,10 +183,7 @@
                     placeholder: "Seleccione",
                     allowClear: true
                 });
-
             });
-
-
         </script>
     @endsection
 </x-app-layout>
