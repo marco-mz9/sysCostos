@@ -1,10 +1,6 @@
 <x-app-layout>
     <div class="py-12">
-<<<<<<< HEAD
         <div class="sm:max-w-screen-md   mx-auto sm:px-6 lg:px-8">
-=======
-        <div class="sm:max-w-md   mx-auto sm:px-6 lg:px-8">
->>>>>>> master
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="flow-root ">
@@ -14,13 +10,8 @@
                             Atras
                         </a>
                     </div>
-<<<<<<< HEAD
 {{--                    <form class="space-y-4 text-gray-700" action="{{ route('sales.store') }}" method="POST">--}}
                     <form class="space-y-4 text-gray-700" action="{{ route('sales.store') }}" method="POST">
-=======
-                    <form class="space-y-4 text-gray-700" action="" method="POST">
-{{--                    <form class="space-y-4 text-gray-700" action="{{ route('sales.store') }}" method="POST">--}}
->>>>>>> master
                         @csrf
                         {{--                        @if ($errors->any())--}}
                         {{--                            <div class="alert alert-danger" role="alert">--}}
@@ -36,11 +27,7 @@
                             <div class="w-full px-2 md:w-full sm:w-1/2">
                                 <label class="block mb-1 text-left" for="formInput_details">Detalles</label>
                                 <textarea  rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "
-<<<<<<< HEAD
                                           placeholder="Escribir aquí" id="formInput_details"  name="description" ></textarea>
-=======
-                                          placeholder="Escribir aquí" id="formInput_details"  name="details" ></textarea>
->>>>>>> master
                             </div>
 {{--                            <div class="w-full px-2 md:w-1/4 sm:w-1/2">--}}
 {{--                                <label class="block mb-1 text-center" for="formInput_dateStart"> Fecha Inicio</label>--}}

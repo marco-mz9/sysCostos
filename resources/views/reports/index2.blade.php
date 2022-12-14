@@ -19,21 +19,12 @@
                                 id="date_end" name="date_end"/>
                         </div>
                         <div class="w-full px-2 md:w-1/3 sm:w-1/2">
-<<<<<<< HEAD
                             <label class="block mb-1 text-center" for="select_class"> Ordenes de Producción</label>
                             <select
                                 class="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline"
                                 name="select_class" id="select_class">
                                 @foreach($orders as $order)
                                     <option value="{{ $order->id }}">{{ $order->id}}</option>
-=======
-                            <label class="block mb-1 text-center" for="select_class"> Clasificación</label>
-                            <select
-                                class="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline"
-                                name="select_class" id="select_class">
-                                @foreach($classification as $value)
-                                    <option value="{{ $value->name }}">{{ $value->name}}</option>
->>>>>>> master
                                 @endforeach
                             </select>
                         </div>
