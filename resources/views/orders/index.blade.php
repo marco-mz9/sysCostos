@@ -4,12 +4,20 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="block mb-6 pl-2 ">
+<<<<<<< HEAD
                         <a href="{{ route('orders.create') }}"
+=======
+                        <a href="{{ route('sales.create') }}"
+>>>>>>> master
                            class="items-center text-white  py-1 px-4 w-auto bg-gray-500 hover:bg-gray-700 rounded-full active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none bg-amber-500 hover:bg-amber-700">
                             <i class="fas fa-list"></i>
                             Crear Órdenes de Producción
                         </a>
+<<<<<<< HEAD
                         <a href="{{ route('sales.index') }}"
+=======
+                        <a href="{{ route('sales.sale') }}"
+>>>>>>> master
                            class="items-center text-white ml-6 py-1 px-4 w-auto bg-gray-500 hover:bg-gray-700 rounded-full active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none bg-indigo-500 hover:bg-indigo-700">
                             <i class="fas fa-cash-register"></i>
                             Crear Pedido
@@ -81,7 +89,11 @@
                                                 class="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 Pedido
                                             </th>
+<<<<<<< HEAD
                                             <th></th>
+=======
+                                            {{--                                                <th></th>--}}
+>>>>>>> master
                                         </tr>
                                         </thead>
                                         <tbody class="bg-white divide-y divide-gray-200">
@@ -150,7 +162,11 @@
                                                     </div>
                                                 </td>
                                                 <td class="text-right">
+<<<<<<< HEAD
                                                     <a href="{{route('orders.show',$order->id)}}"
+=======
+                                                    <a href="{{route('sales.show',$order->id)}}"
+>>>>>>> master
                                                        class="btn btn-default btn-sm">Mostrar</a>
                                                 </td>
                                             </tr>
