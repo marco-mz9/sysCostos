@@ -7,13 +7,21 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="flow-root ">
+<<<<<<< HEAD
                         <a href="{{ route('orders.index') }}"
+=======
+                        <a href="{{ route('sales.index') }}"
+>>>>>>> master
                            class="float-right text-white m-3 bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
                             <i class="fas fa-arrow-left"></i>
                             Atras
                         </a>
                     </div>
+<<<<<<< HEAD
                     <form class="space-y-4 text-gray-700" action="{{ route('orders.store') }}" method="POST">
+=======
+                    <form class="space-y-4 text-gray-700" action="{{ route('sales.store') }}" method="POST">
+>>>>>>> master
                         @csrf
                         {{--                        @if ($errors->any())--}}
                         {{--                            <div class="alert alert-danger" role="alert">--}}
@@ -26,34 +34,51 @@
                         {{--                        @endif--}}
                         <div class="flex flex-wrap mx-5 space-y-4 md:space-y-0">
 
+<<<<<<< HEAD
                             <div class="w-full px-2 md:w-1/5 sm:w-1/2">
+=======
+                            <div class="w-full px-2 md:w-1/4 sm:w-1/2">
+>>>>>>> master
                                 <label class="block mb-1 text-center" for="formInput_client_name">Cliente</label>
                                 <input
                                     class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
                                     type="text"
                                     name="name" id="formInput_client_name"/>
                             </div>
+<<<<<<< HEAD
                             <div class="w-full px-2 md:w-1/5 sm:w-1/2">
+=======
+                            <div class="w-full px-2 md:w-1/4 sm:w-1/2">
+>>>>>>> master
                                 <label class="block mb-1 text-center" for="formInput_ruc">RUC</label>
                                 <input
                                     class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
                                     type="text"
                                     name="ruc" id="formInput_ruc"/>
                             </div>
+<<<<<<< HEAD
                             <div class="w-full px-2 md:w-1/5 sm:w-1/2">
+=======
+                            <div class="w-full px-2 md:w-1/4 sm:w-1/2">
+>>>>>>> master
                                 <label class="block mb-1 text-center" for="formInput_dateStart"> Fecha Inicio</label>
                                 <input
                                     class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
                                     type="date"
                                     id="formInput_dateStart" name="date_start"/>
                             </div>
+<<<<<<< HEAD
                             <div class="w-full px-2 md:w-1/5 sm:w-1/2">
+=======
+                            <div class="w-full px-2 md:w-1/4 sm:w-1/2">
+>>>>>>> master
                                 <label class="block mb-1 text-center" for="formInput_dateEnd"> Fecha Fin</label>
                                 <input
                                     class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
                                     type="date"
                                     id="formInput_dateEnd" name="date_end"/>
                             </div>
+<<<<<<< HEAD
                             <div class="w-full px-2 md:w-1/5 sm:w-1/2">
                                 <label class="block mb-1 text-center" for="select_class"> Pedido</label>
                                 <select
@@ -64,6 +89,8 @@
                                     @endforeach
                                 </select>
                             </div>
+=======
+>>>>>>> master
                         </div>
                         <div class="flex flex-col">
                             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
