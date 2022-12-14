@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Classification;
+use App\Models\Order;
 use App\Models\Purchase_Detail;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -27,6 +28,12 @@ class ReportController extends Controller
                 $query->whereBetween('date', [$dateStart, $dateEnd]);
             })->whereRelation('detail.classification', 'name', 'like', $class)->get();
         return view('reports.report', compact('reports'));
+    }
+
+    public function index2(): Factory|View|Application
+    {
+        $orders = Order::get();
+        return view('reports.index2', compact('orders'));
     }
 
 }

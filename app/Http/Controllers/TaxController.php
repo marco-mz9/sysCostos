@@ -30,11 +30,9 @@ class TaxController extends Controller
     {
         $data = $this->validate($request, [
             'name' => 'required|max:100',
-
         ]);
         $data['state'] = 1;
         Tax::create($data);
-
         return redirect()->route('taxes.index')->with('status', 'IVA Creado Correctamente');
     }
 

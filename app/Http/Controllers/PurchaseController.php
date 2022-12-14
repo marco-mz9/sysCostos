@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Classification;
 use App\Models\Detail;
+use App\Models\Order;
 use App\Models\Purchase;
 use App\Models\Purchase_Detail;
 use App\Models\Supplier;
@@ -19,15 +20,16 @@ class PurchaseController extends Controller
 {
     public function index(): Factory|View|Application
     {
-        $purchase_details = Purchase_Detail::with('purchase.supplier', 'tax', 'detail', 'detail.classification')->paginate(10);
+        $purchase_details = Purchase_Detail::with('purchase.supplier', 'tax', 'detail', 'detail.classification','purchase.order')->paginate(10);
         return view('shopping.index', compact('purchase_details'));
     }
 
     public function create(): Factory|View|Application
     {
+        $orders = Order::get();
         $taxes = Tax::get();
         $classification = Classification::get();
-        return view('shopping.create', compact('taxes', 'classification'));
+        return view('shopping.create', compact('taxes', 'classification','orders'));
     }
 
     /**
@@ -40,6 +42,7 @@ class PurchaseController extends Controller
             'ruc' => 'required|max:13',
             'authorization' => 'required|max:15',
             'name' => 'required|max:50',
+            'order' => 'required',
             'details.*.detail' => 'required|max:255',
             'details.*.classification_id' => 'required',
             'details.*.quantity' => 'required|numeric|min:1',
@@ -65,7 +68,9 @@ class PurchaseController extends Controller
         $data = $request->except('details');
         $data['state'] = 1;
         $supplier = Supplier::create($data);
+        $order = Order::find($data['order']);
         $data['supplier_id'] = $supplier->id;
+        $data['order_id'] = $order->id;
         $purchase = Purchase::create($data);
         $purchase->details()->saveMany($details);
         return redirect()->route('purchases.index')->with('status', 'Compra Creada Correctamente');

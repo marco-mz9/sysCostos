@@ -18,14 +18,17 @@
                     <x-nav-link :href="route('purchases.index')" :active="request()->routeIs('purchases.index')">
                         {{ __('Egresos') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('sales.index')" :active="request()->routeIs('sales.index')">
+                    <x-nav-link :href="route('orders.index')" :active="request()->routeIs('orders.index')">
                         {{ __('Ventas') }}
                     </x-nav-link>
                     <x-nav-link :href="route('sales.order')" :active="request()->routeIs('sales.order')">
                         {{ __('Ordenes de Producción') }}
                     </x-nav-link>
                     <x-nav-link :href="route('reports.index')" :active="request()->routeIs('reports.index')">
-                        {{ __('Reportes') }}
+                        {{ __('Reportes Compras') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('reports.index2')" :active="request()->routeIs('reports.index2')">
+                        {{ __('Reportes Ventas') }}
                     </x-nav-link>
                 </div>
             </div>

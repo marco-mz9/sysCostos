@@ -13,33 +13,44 @@
                     <form class="space-y-4 text-gray-700" action="{{ route('purchases.store') }}" method="POST">
                         @csrf
                         <div class="flex flex-wrap mx-3 space-y-4 md:space-y-0">
-                            <div class="w-full px-2 md:w-1/4 sm:w-1/2">
+                            <div class="w-full px-2 md:w-1/5 sm:w-1/2">
                                 <label class="block mb-1 text-center" for="formInput_date"> Fecha</label>
                                 <input
                                     class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
                                     type="date"
                                     id="formInput_date" name="date"/>
                             </div>
-                            <div class="w-full px-2 md:w-1/4 sm:w-1/2">
+                            <div class="w-full px-2 md:w-1/5 sm:w-1/2">
                                 <label class="block mb-1 text-center" for="formInput_ruc">RUC</label>
                                 <input
                                     class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
                                     type="text"
                                     name="ruc" id="formInput_ruc"/>
                             </div>
-                            <div class="w-full px-2 md:w-1/4 sm:w-1/2">
+                            <div class="w-full px-2 md:w-1/5 sm:w-1/2">
                                 <label class="block mb-1 text-center" for="formInput_authorization">Autorización</label>
                                 <input
                                     class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
                                     type="text"
                                     name="authorization" id="formInput_authorization"/>
                             </div>
-                            <div class="w-full px-2 md:w-1/4">
+                            <div class="w-full px-2 md:w-1/5">
                                 <label class="block mb-1 text-center" for="formInput_supplier_name">Proveedor</label>
                                 <input
                                     class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
                                     type="text"
                                     name="name" id="formInput_supplier_name"/>
+                            </div>
+                            <div class="w-full px-2 md:w-1/5 sm:w-1/2">
+                                <label class="block mb-1 text-center" for="select_class"> Orden</label>
+                                <select
+                                    class="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline"
+                                    name="order" id="select_class">
+                                    <option value="option_select" disabled selected></option>
+                                    @foreach($orders as $order)
+                                        <option value="{{ $order->id }}">{{ $order->id }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="flex flex-col">

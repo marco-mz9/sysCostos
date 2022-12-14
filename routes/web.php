@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SaleController;
@@ -16,6 +17,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::resource('purchases', PurchaseController::class)->only(['index', 'store', 'create']);
 
     Route::resource('sales', SaleController::class)->except(['edit', 'destroy', 'update']);
+    Route::resource('orders', OrderController::class)->except(['edit', 'destroy', 'update']);
     Route::get('order', [SaleController::class, 'orderP'])->name('sales.order');
     Route::get('/api/fetch-products/{id}/products', [SaleController::class, 'fetchProduct']);
 
@@ -23,6 +25,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
     Route::get('reports', [ReportController::class, 'index'])->name('reports.index');
     Route::get('reports/date', [ReportController::class, 'reportSale'])->name('reports.sale');
+    Route::get('reportsP', [ReportController::class, 'index2'])->name('reports.index2');
+    Route::get('reportsP/date', [ReportController::class, 'reportPurchase'])->name('reports.purchase');
 });
 
 require __DIR__ . '/auth.php';

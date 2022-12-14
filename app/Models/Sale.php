@@ -13,6 +13,8 @@ class Sale extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['description'];
+
     public function order(): HasMany
     {
         return $this->hasMany(Order::class);

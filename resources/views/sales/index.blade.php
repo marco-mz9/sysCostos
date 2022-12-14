@@ -3,9 +3,9 @@
         <div class="max-w-screen-2xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <div class="block mb-6 pl-2">
+                    <div class="block mb-6 pl-2 ">
                         <a href="{{ route('sales.create') }}"
-                           class="items-center text-white  py-1 px-4 w-auto bg-gray-500 hover:bg-gray-700 rounded-full active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none bg-blue-500 hover:bg-blue-700">
+                           class="items-center text-white ml-6 py-1 px-4 w-auto bg-gray-500 hover:bg-gray-700 rounded-full active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none bg-indigo-500 hover:bg-indigo-700">
                             <i class="fas fa-cash-register"></i>
                             Crear Pedido
                         </a>
@@ -38,115 +38,26 @@
                                         <tr>
                                             <th scope="col"
                                                 class="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                N° Orden
+                                                N° Pedido
                                             </th>
                                             <th scope="col"
                                                 class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Cliente
+                                                Detalle
                                             </th>
-                                            <th scope="col"
-                                                class="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                RUC
-                                            </th>
-                                            <th scope="col"
-                                                class="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Cantidad
-                                            </th>
-                                            <th scope="col"
-                                                class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Producto
-                                            </th>
-                                            <th scope="col"
-                                                class="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Precio Unitario Acordado
-                                            </th>
-                                            <th scope="col"
-                                                class="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Precio Total
-                                            </th>
-                                            <th scope="col"
-                                                class="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Fecha Inicio
-                                            </th>
-                                            <th scope="col"
-                                                class="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Fecha Finalización
-                                            </th>
-                                            <th scope="col"
-                                                class="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Pedido
-                                            </th>
-                                            {{--                                                <th></th>--}}
                                         </tr>
                                         </thead>
                                         <tbody class="bg-white divide-y divide-gray-200">
-                                        @foreach($orders as $order)
+                                        @foreach($sales as $sale)
                                             <tr>
                                                 <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">
                                                     <div class="text-sm text-center leading-5 text-gray-500">
-                                                        {{$order->id}}
+                                                        {{$sale->id}}
                                                     </div>
                                                 </td>
                                                 <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">
                                                     <div class="text-sm text-left leading-5 text-gray-500">
-                                                        {{$order->client->name}}
+                                                        {{$sale->description}}
                                                     </div>
-                                                </td>
-                                                <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">
-                                                    <div class="text-sm text-center leading-5 text-gray-500">
-                                                        {{$order->client->ruc}}
-                                                    </div>
-                                                </td>
-                                                <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">
-                                                    <div class="text-sm text-center leading-5 text-gray-500">
-                                                        <ul>
-                                                            @foreach($order->products as $item)
-                                                                <li>{{ $item->pivot->quantity }}</li>
-                                                            @endforeach
-                                                        </ul>
-                                                    </div>
-                                                </td>
-                                                <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">
-                                                    <div class="text-sm text-left leading-5 text-gray-500">
-                                                        @foreach($order->products as $item)
-                                                            {{ $item->product }}
-                                                        @endforeach
-                                                    </div>
-                                                </td>
-                                                <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">
-                                                    <div class="text-sm text-center leading-5 text-gray-500">
-                                                        @foreach($order->products as $item)
-                                                            {{ $item->price }}
-                                                        @endforeach
-                                                    </div>
-                                                </td>
-                                                <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">
-                                                    <div class="text-sm text-center leading-5 text-gray-500">
-                                                        <ul>
-                                                            @foreach($order->products as $item)
-                                                                ${{ $item->pivot->total_price }}
-                                                            @endforeach
-                                                        </ul>
-                                                    </div>
-                                                </td>
-                                                <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">
-                                                    <div class="text-sm text-center leading-5 text-gray-500">
-                                                        {{$order->date_start}}
-                                                    </div>
-                                                </td>
-                                                <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">
-                                                    <div class="text-sm text-center leading-5 text-gray-500">
-                                                        {{$order->date_end}}
-                                                    </div>
-                                                </td>
-                                                <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">
-                                                    <div class="text-sm text-center leading-5 text-gray-500">
-                                                        {{$order->sale->id}}
-                                                    </div>
-                                                </td>
-                                                <td class="text-right">
-                                                    <a href="{{route('sales.show',$order->id)}}"
-                                                       class="btn btn-default btn-sm">Mostrar</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -154,7 +65,7 @@
                                     </table>
                                 </div>
                                 <div class="mt-4">
-                                    {{ $orders->links() }}
+{{--                                    {{ $orders->links() }}--}}
                                 </div>
                             </div>
                         </div>

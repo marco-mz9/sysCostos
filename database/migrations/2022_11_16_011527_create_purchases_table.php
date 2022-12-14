@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->id();
             $table->date('date');
             $table->foreignId('supplier_id')->constrained();
+            $table->foreignId('order_id')->constrained();
             $table->string('authorization');
             $table->timestamps();
         });

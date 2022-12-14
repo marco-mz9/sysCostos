@@ -114,7 +114,7 @@
                                             </td>
                                             <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">
                                                 <div class="text-sm text-center leading-5 text-gray-500">
-                                                    $ {{$purchase_detail->unit_value}}
+                                                    $ {{$purchase_detail->detail->unit_value}}
                                                 </div>
                                             </td>
                                             <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">

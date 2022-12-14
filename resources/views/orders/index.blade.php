@@ -3,11 +3,16 @@
         <div class="max-w-screen-2xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <div class="block mb-6 pl-2">
-                        <a href="{{ route('purchases.create') }}"
-                           class="items-center text-white  py-1 px-4 w-auto bg-gray-500 hover:bg-gray-700 rounded-full active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none bg-blue-500 hover:bg-blue-700">
-                            <i class="fas fa-shopping-cart"></i>
-                            Registrar Egreso
+                    <div class="block mb-6 pl-2 ">
+                        <a href="{{ route('orders.create') }}"
+                           class="items-center text-white  py-1 px-4 w-auto bg-gray-500 hover:bg-gray-700 rounded-full active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none bg-amber-500 hover:bg-amber-700">
+                            <i class="fas fa-list"></i>
+                            Crear Órdenes de Producción
+                        </a>
+                        <a href="{{ route('sales.index') }}"
+                           class="items-center text-white ml-6 py-1 px-4 w-auto bg-gray-500 hover:bg-gray-700 rounded-full active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none bg-indigo-500 hover:bg-indigo-700">
+                            <i class="fas fa-cash-register"></i>
+                            Crear Pedido
                         </a>
                     </div>
                     <div class="flex flex-col">
@@ -31,131 +36,122 @@
                                         </div>
                                     @endif
                                 </div>
+
                                 <div class=" shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                                     <table class="min-w-full table-auto divide-y divide-gray-200">
                                         <thead class="bg-gray-100">
                                         <tr>
                                             <th scope="col"
                                                 class="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                N°
+                                                N° Orden
+                                            </th>
+                                            <th scope="col"
+                                                class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Cliente
                                             </th>
                                             <th scope="col"
                                                 class="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Fecha
-                                            </th>
-                                            <th scope="col"
-                                                class="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Detalle
-                                            </th>
-                                            <th scope="col"
-                                                class="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Ruc
-                                            </th>
-                                            <th scope="col"
-                                                class="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Autorización
-                                            </th>
-                                            <th scope="col"
-                                                class="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Proveedor
-                                            </th>
-                                            <th scope="col"
-                                                class="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Clasificación
+                                                RUC
                                             </th>
                                             <th scope="col"
                                                 class="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 Cantidad
                                             </th>
                                             <th scope="col"
-                                                class="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Costo Unitario
+                                                class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Producto
                                             </th>
                                             <th scope="col"
                                                 class="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Costo total
+                                                Precio Unitario Acordado
                                             </th>
                                             <th scope="col"
                                                 class="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                IVA
+                                                Precio Total
                                             </th>
                                             <th scope="col"
                                                 class="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Total
+                                                Fecha Inicio
                                             </th>
                                             <th scope="col"
                                                 class="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Orden
+                                                Fecha Finalización
                                             </th>
+                                            <th scope="col"
+                                                class="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Pedido
+                                            </th>
+                                            <th></th>
                                         </tr>
                                         </thead>
                                         <tbody class="bg-white divide-y divide-gray-200">
-                                        @foreach($purchase_details as $purchase_detail)
+                                        @foreach($orders as $order)
                                             <tr>
                                                 <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">
                                                     <div class="text-sm text-center leading-5 text-gray-500">
-                                                        {{$purchase_detail->purchase->id}}
-                                                    </div>
-                                                </td>
-                                                <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">
-                                                    <div class="text-sm text-center leading-5 text-gray-500">
-                                                        {{$purchase_detail->purchase->date}}
+                                                        {{$order->id}}
                                                     </div>
                                                 </td>
                                                 <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">
                                                     <div class="text-sm text-left leading-5 text-gray-500">
-                                                        {{$purchase_detail->detail->detail}}
+                                                        {{$order->client->name}}
                                                     </div>
                                                 </td>
                                                 <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">
                                                     <div class="text-sm text-center leading-5 text-gray-500">
-                                                        {{$purchase_detail->purchase->supplier->ruc}}
+                                                        {{$order->client->ruc}}
                                                     </div>
                                                 </td>
                                                 <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">
                                                     <div class="text-sm text-center leading-5 text-gray-500">
-                                                        {{$purchase_detail->purchase->authorization}}
+                                                        <ul>
+                                                            @foreach($order->products as $item)
+                                                                <li>{{ $item->pivot->quantity }}</li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                                <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">
+                                                    <div class="text-sm text-left leading-5 text-gray-500">
+                                                        @foreach($order->products as $item)
+                                                            {{ $item->product }}
+                                                        @endforeach
                                                     </div>
                                                 </td>
                                                 <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">
                                                     <div class="text-sm text-center leading-5 text-gray-500">
-                                                        {{$purchase_detail->purchase->supplier->name}}
+                                                        @foreach($order->products as $item)
+                                                            {{ $item->price }}
+                                                        @endforeach
                                                     </div>
                                                 </td>
                                                 <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">
                                                     <div class="text-sm text-center leading-5 text-gray-500">
-                                                        {{$purchase_detail->detail->classification->name}}
+                                                        <ul>
+                                                            @foreach($order->products as $item)
+                                                                ${{ $item->pivot->total_price }}
+                                                            @endforeach
+                                                        </ul>
                                                     </div>
                                                 </td>
                                                 <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">
                                                     <div class="text-sm text-center leading-5 text-gray-500">
-                                                        {{$purchase_detail->quantity}}</div>
-                                                </td>
-                                                <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">
-                                                    <div class="text-sm text-center leading-5 text-gray-500">
-                                                        $ {{$purchase_detail->detail->unit_value}}
-                                                        {{--                                                            $ {{$purchase_detail->unit_value}}--}}
+                                                        {{$order->date_start}}
                                                     </div>
                                                 </td>
                                                 <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">
                                                     <div class="text-sm text-center leading-5 text-gray-500">
-                                                        $ {{$purchase_detail->total_value}}
+                                                        {{$order->date_end}}
                                                     </div>
                                                 </td>
                                                 <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">
                                                     <div class="text-sm text-center leading-5 text-gray-500">
-                                                        {{$purchase_detail->tax->name}}
+                                                        {{$order->sale->id}}
                                                     </div>
                                                 </td>
-                                                <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">
-                                                    <div class="text-sm text-center leading-5 text-gray-500">
-                                                        $ {{$purchase_detail->total}}
-                                                    </div>
-                                                </td>
-                                                <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">
-                                                    <div class="text-sm text-center leading-5 text-gray-500">
-                                                        {{$purchase_detail->purchase->order->id}}
-                                                    </div>
+                                                <td class="text-right">
+                                                    <a href="{{route('orders.show',$order->id)}}"
+                                                       class="btn btn-default btn-sm">Mostrar</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -163,7 +159,7 @@
                                     </table>
                                 </div>
                                 <div class="mt-4">
-                                    {{ $purchase_details->links() }}
+                                    {{ $orders->links() }}
                                 </div>
                             </div>
                         </div>
@@ -173,3 +169,4 @@
         </div>
     </div>
 </x-app-layout>
+

@@ -11,12 +11,18 @@ class Purchase extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['date', 'supplier_id', 'authorization'];
+    protected $fillable = ['date', 'supplier_id', 'order_id', 'authorization'];
 
     public function supplier(): BelongsTo
     {
         return $this->belongsTo(Supplier::class);
     }
+
+    public function order(): BelongsTo
+    {
+        return $this->belongsTo(Order::class);
+    }
+
 
     public function details(): HasMany
     {
