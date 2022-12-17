@@ -37,7 +37,7 @@ class PurchaseController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $this->validate($request, rules: [
+        $this->validate($request, [
             'date' => 'required|date_format:Y-m-d',
             'ruc' => 'required|max:13',
             'authorization' => 'required|max:15',
@@ -49,6 +49,7 @@ class PurchaseController extends Controller
             'details.*.unit_value' => 'required|min:1',
             'details.*.tax_id' => 'required',
         ]);
+
         $details = collect($request->details)->transform(function ($detail) {
             $detail['total_value'] = $detail['quantity'] * $detail['unit_value'];
             if ($detail['tax_id'] == 1) {
@@ -65,6 +66,7 @@ class PurchaseController extends Controller
             $detail['detail_id'] = $detal->id;
             return new Purchase_Detail($detail);
         });
+
         $data = $request->except('details');
         $data['state'] = 1;
         $supplier = Supplier::create($data);

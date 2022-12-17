@@ -19,10 +19,10 @@ use Illuminate\Validation\ValidationException;
 class OrderController extends Controller
 {
      public function index(): Factory|View|Application
-        {
-            $orders = Order::with('products', 'client', 'sale')->paginate(10);
-            return view('orders.index', compact('orders'));
-        }
+     {
+         $orders = Order::with('products', 'client', 'sale')->paginate(10);
+         return view('orders.index', compact('orders'));
+     }
 
     public function create(): Factory|View|Application
     {
@@ -34,16 +34,15 @@ class OrderController extends Controller
     /**
      * @throws ValidationException
      */
-    public function store(Request $request)
-//    public function store(Request $request): RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
         $this->validate($request, [
-            'name' => 'required|max:100',
-            'ruc' => 'required|max:13',
+            'name' => 'required|string|max:100',
+            'ruc' => 'required|string|max:13',
             'date_start' => 'required|date_format:Y-m-d',
             'date_end' => 'required|date_format:Y-m-d',
             'sale' => 'required',
-            'products.*.product' => 'required',
+            'products.*.product' => 'required|string|max:150',
             'products.*.price' => 'required',
             'products.*.quantity' => 'required|numeric',
         ]);

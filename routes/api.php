@@ -18,5 +18,3 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-//Route::get('fetch-products/{id}/products', [SaleController::class, 'fetchProduct']);
-////Route::get('api/fetch-products/{id}/products', [SaleController::class, 'fetchProduct']);

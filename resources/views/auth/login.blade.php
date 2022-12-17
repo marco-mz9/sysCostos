@@ -13,7 +13,7 @@
             @csrf
 
             <!-- Email Address -->
-            <h1 class="text-center text-3xl">ENCI System</h1>
+            <h1 class="text-center text-3xl">EPS</h1>
             <div>
                 <x-input-label for="email" :value="__('Email')"/>
 

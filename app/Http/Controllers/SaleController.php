@@ -43,15 +43,4 @@ class SaleController extends Controller
         Sale::create($data);
         return redirect()->route('sales.index')->with('status', 'Pedido Creado Correctamente');
     }
-
-    public function orderP(): Factory|View|Application
-    {
-        $ord = Sale::all();
-        return view('sales.order', compact('ord'));
-    }
-
-    public function fetchProduct($id): Model|Collection|Builder|array|null
-    {
-        return Order::with('products', 'client', 'sale')->findOrFail($id);
-    }
 }

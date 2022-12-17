@@ -36,7 +36,6 @@
                                         </div>
                                     @endif
                                 </div>
-
                                 <div class=" shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                                     <table class="min-w-full table-auto divide-y divide-gray-200">
                                         <thead class="bg-gray-100">
@@ -81,7 +80,7 @@
                                                 class="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 Pedido
                                             </th>
-                                            <th></th>
+{{--                                            <th></th>--}}
                                         </tr>
                                         </thead>
                                         <tbody class="bg-white divide-y divide-gray-200">
@@ -149,10 +148,10 @@
                                                         {{$order->sale->id}}
                                                     </div>
                                                 </td>
-                                                <td class="text-right">
-                                                    <a href="{{route('orders.show',$order->id)}}"
-                                                       class="btn btn-default btn-sm">Mostrar</a>
-                                                </td>
+                                                {{--                                                <td class="text-right">--}}
+                                                {{--                                                    <a href="{{route('orders.show',$order->id)}}"--}}
+                                                {{--                                                       class="items-center text-white ml-6 py-1 px-4 w-auto bg-gray-500 hover:bg-gray-700 rounded-full active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none bg-purple-500 hover:bg-purple-700">Mostrar</a>--}}
+                                                {{--                                                </td>--}}
                                             </tr>
                                         @endforeach
                                         </tbody>

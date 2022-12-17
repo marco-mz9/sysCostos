@@ -13,20 +13,21 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/', [HomeController::class, 'index'])->name('dashboard');
 
     Route::resource('taxes', TaxController::class);
-
     Route::resource('purchases', PurchaseController::class)->only(['index', 'store', 'create']);
 
-    Route::resource('sales', SaleController::class)->except(['edit', 'destroy', 'update']);
+    Route::resource('sales', SaleController::class)->only(['index', 'store', 'create']);
+
+
     Route::resource('orders', OrderController::class)->except(['edit', 'destroy', 'update']);
-    Route::get('order', [SaleController::class, 'orderP'])->name('sales.order');
-    Route::get('/api/fetch-products/{id}/products', [SaleController::class, 'fetchProduct']);
+    Route::get('orders/{order}/pdf', [OrderController::class, 'pdfOrder'])->name('orders.pdfOrder');
 
-    Route::get('sales/{sale}/pdf', [SaleController::class, 'pdfOrder'])->name('sales.pdfOrder');
-
+    Route::get('reportsOrder', [ReportController::class, 'orderP'])->name('report.order');
+    Route::get('/api/fetch-products/{id}/products', [ReportController::class, 'fetchProduct']);
+//    Route::get('excelOrder', [ReportController::class, 'exportExcelO'])->name('reports.excel2');
     Route::get('reports', [ReportController::class, 'index'])->name('reports.index');
     Route::get('reports/date', [ReportController::class, 'reportSale'])->name('reports.sale');
-    Route::get('reportsP', [ReportController::class, 'index2'])->name('reports.index2');
-    Route::get('reportsP/date', [ReportController::class, 'reportPurchase'])->name('reports.purchase');
+    Route::get('excel', [ReportController::class, 'exportExcel'])->name('reports.excel');
+
 });
 
 require __DIR__ . '/auth.php';

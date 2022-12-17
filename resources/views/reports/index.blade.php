@@ -5,7 +5,7 @@
                 <form class="space-y-4 text-gray-700" action="{{ route('reports.sale') }}" method="GET">
                     <div class="flex flex-wrap justify-center mx-5 space-y-4 md:space-y-0">
                         <div class="w-full px-2 md:w-1/3 sm:w-1/2">
-                            <label class="block mb-1 text-center" for="datestart"> Fecha Desde</label>
+                            <label class="block mb-1 text-center" for="date_start"> Fecha Desde</label>
                             <input
                                 class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
                                 type="date"
@@ -30,10 +30,13 @@
                         </div>
                     </div>
                     <div class="flex justify-center ">
-                        <button type="submit"
+                        <button type="submit" name="action" value="save"
                                 class="text-white m-3 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ">
                             <i class="fas fa-search"> </i> Buscar
-                            {{--                            <i class="fas fa-search"> </i> Buscar--}}
+                        </button>
+                        <button type="submit" name="action" value="excel"
+                                class="text-white m-3 bg-gradient-to-r from-emerald-500 via-emerald-600 to-emerald-700 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ">
+                            <i class="fas fa-file-excel"></i> Exportar Excel
                         </button>
                     </div>
                 </form>
@@ -42,22 +45,8 @@
     </div>
     @section('scripts')
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-        <script>
-            // $(document).ready(function(){
-            //     $(function (){
-            //         $("#select_class").on('change',onSelectClassChange)
-            //     });
-            //
-            //     function onSelectClassChange(){
-            //         let class_id = $(this).val();
-            //         let dateStart= $( "#dateStart" ).val();
-            //         let dateEnd= $( "#dateEnd" ).val();
-            //         alert(class_id)
-            //         alert(dateStart)
-            //         alert(dateEnd)
-            //     }
-            // });
-        </script>
+        <script src="https://code.jquery.com/jquery-3.6.2.min.js"
+                integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
     @endsection
 </x-app-layout>
 
