@@ -61,7 +61,7 @@ class OrderController extends Controller
             $value['total_price'] = $value['quantity'] * $value['price'];
             $order->products()->attach($product->id, ['quantity' => $value['quantity'], 'total_price' => $value['total_price']]);
         }
-        return redirect()->route('orders.index')->with('status', 'Ordenes Creadas Correctamente');
+        return redirect()->route('orders.index')->with('success', 'Ordenes Creadas Correctamente');
     }
 
     public function show($id): Factory|View|Application

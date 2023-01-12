@@ -1,4 +1,9 @@
 <x-app-layout>
+    <x-slot name="header">
+        <h2 class="text-lg text-blue-100 md:text-2xl">
+            {{--            IVA--}}
+        </h2>
+    </x-slot>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -21,7 +26,7 @@
                                                     class="px-6 py-3 text-left text-xs font-medium text-warmGray-50 uppercase tracking-wider">
                                                     Nombre
                                                 </th>
-                                                <th scope="col" width="200" class="px-6 py-3 font-medium "></th>
+                                                <th scope="col" class="px-6 py-3 font-medium "></th>
                                             </tr>
                                             </thead>
                                             <tbody class="bg-white divide-y divide-gray-200">

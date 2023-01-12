@@ -33,7 +33,8 @@ class TaxController extends Controller
         ]);
         $data['state'] = 1;
         Tax::create($data);
-        return redirect()->route('taxes.index')->with('status', 'IVA Creado Correctamente');
+//        toast('Usuario Creado Correctamente!','success')->autoClose(4000)->width('400px');
+        return redirect()->route('taxes.index')->with('success', 'IVA Creado Correctamente');
     }
 
     public function edit($id): Factory|View|Application
@@ -59,7 +60,7 @@ class TaxController extends Controller
     public function destroy(Tax $tax): RedirectResponse
     {
         $tax->delete();
-        return redirect()->route('taxes.index')->with('status', 'IVA Correctamente Eliminado');
+        return redirect()->route('taxes.index')->with('success', 'IVA Correctamente Eliminado');
     }
 
 }

@@ -9,6 +9,9 @@
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')"/>
 
+        {{--        <!-- Validation Errors -->--}}
+        {{--        <x-validation-errors class="mb-4" :errors="$errors" />--}}
+
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
@@ -35,11 +38,13 @@
                 <x-input-error :messages="$errors->get('password')" class="mt-2"/>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <x-primary-button class="ml-3">
-                    <a href="{{ route('register') }}" class="ml-3">{{ __('Register') }}</a>
+            <div class="flex items-center justify-center mt-4">
+                <x-primary-button>{{ __('Log in') }}</x-primary-button>
+            </div>
+            <div class="flex items-center justify-center mt-4">
+                <x-primary-button>
+                    <a href="{{ route('register') }}">{{ __('Register') }}</a>
                 </x-primary-button>
-                <x-primary-button class="ml-3">{{ __('Log in') }}</x-primary-button>
             </div>
         </form>
     </x-auth-card>

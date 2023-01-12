@@ -108,7 +108,7 @@
                     let cantidad = data.products[0].pivot.quantity;
 
                     let total_unit = total1 / cantidad;
-                    let utilidad = data.products[0].pivot.total_price - total1;
+                    let utilidad = total1 - data.products[0].pivot.total_price;
                     console.log(total_unit);
                     $('#table_footT').append(
                         $('<tr>').append(
@@ -187,7 +187,6 @@
                         '<label class="block mb-1" for="product">Precio Total</label>' +
                         '<input  type="text" value="' + data.products[0].pivot.total_price + '" class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" disabled>' +
                         '</div>';
-                    // console.log(html_product);
                     $("#product").html(html_product);
                 });
             }

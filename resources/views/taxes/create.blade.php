@@ -10,7 +10,7 @@
                             Atras
                         </a>
                     </div>
-                    {{--                    <x-validation-errors class="mb-4" :errors="$errors"/>--}}
+                    {{--<x-validation-errors class="mb-4" :errors="$errors"/>--}}
                     <form class="space-y-4 text-gray-700" action="{{ route('taxes.store') }}" method="POST">
                         @csrf
                         <div class="space-y-4 text-gray-700">
@@ -32,6 +32,5 @@
                 </div>
             </div>
         </div>
-
-
+    </div>
 </x-app-layout>

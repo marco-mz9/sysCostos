@@ -75,6 +75,6 @@ class PurchaseController extends Controller
         $data['order_id'] = $order->id;
         $purchase = Purchase::create($data);
         $purchase->details()->saveMany($details);
-        return redirect()->route('purchases.index')->with('status', 'Compra Creada Correctamente');
+        return redirect()->route('purchases.index')->with('success', 'Compra Creada Correctamente');
     }
 }
