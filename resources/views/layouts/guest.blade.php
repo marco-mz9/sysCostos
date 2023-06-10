@@ -8,14 +8,17 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+    {{--    <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">--}}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="w-screen h-screen flex justify-center items-center bg-gradient-to-br from-purple-700 to-amber-700">
+
+<body class="min-h-screen bg-gradient-to-br from-purple-700 to-amber-700 flex items-center justify-center">
 <div>
-    <div class="font-sans text-gray-900 antialiased ">
+    <div class="font-sans text-gray-900 antialiased">
         {{ $slot }}
     </div>
 </div>

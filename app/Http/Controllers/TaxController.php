@@ -12,13 +12,13 @@ use Illuminate\Validation\ValidationException;
 
 class TaxController extends Controller
 {
-    public function index(): Factory|View|Application
+    public function index(): View
     {
         $taxes = Tax::paginate(6);
         return view('taxes.index', compact('taxes'));
     }
 
-    public function create(): Factory|View|Application
+    public function create(): View
     {
         return view('taxes.create');
     }

@@ -9,7 +9,7 @@ use App\Http\Controllers\TaxController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::group(['middleware' => ['auth', 'verified']], function () {
+Route::group(['middleware' => ['auth', 'verified']], static function () {
     Route::get('/', [HomeController::class, 'index'])->name('dashboard');
 
     Route::resource('taxes', TaxController::class);
@@ -23,6 +23,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
     Route::get('reportsOrder', [ReportController::class, 'orderP'])->name('report.order');
     Route::get('/api/fetch-products/{id}/products', [ReportController::class, 'fetchProduct']);
+
+
 //    Route::get('excelOrder', [ReportController::class, 'exportExcelO'])->name('reports.excel2');
     Route::get('reports', [ReportController::class, 'index'])->name('reports.index');
     Route::get('reports/date', [ReportController::class, 'reportSale'])->name('reports.sale');

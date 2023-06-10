@@ -9,47 +9,32 @@ use App\Models\Purchase;
 use App\Models\Purchase_Detail;
 use App\Models\Supplier;
 use App\Models\Tax;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use App\Http\Requests\PurchaseRequest;
 use Illuminate\Validation\ValidationException;
 
 class PurchaseController extends Controller
 {
-    public function index(): Factory|View|Application
+    public function index(): View
     {
-        $purchase_details = Purchase_Detail::with('purchase.supplier', 'tax', 'detail', 'detail.classification','purchase.order')->paginate(10);
+        $purchase_details = Purchase_Detail::with('purchase.supplier', 'tax', 'detail', 'detail.classification', 'purchase.order')->paginate(10);
         return view('shopping.index', compact('purchase_details'));
     }
 
-    public function create(): Factory|View|Application
+    public function create(): View
     {
         $orders = Order::get();
         $taxes = Tax::get();
         $classification = Classification::get();
-        return view('shopping.create', compact('taxes', 'classification','orders'));
+        return view('shopping.create', compact('taxes', 'classification', 'orders'));
     }
 
     /**
      * @throws ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(PurchaseRequest $request): RedirectResponse
     {
-        $this->validate($request, [
-            'date' => 'required|date_format:Y-m-d',
-            'ruc' => 'required|max:13',
-            'authorization' => 'required|max:15',
-            'name' => 'required|max:50',
-            'order' => 'required',
-            'details.*.detail' => 'required|max:255',
-            'details.*.classification_id' => 'required',
-            'details.*.quantity' => 'required|numeric|min:1',
-            'details.*.unit_value' => 'required|min:1',
-            'details.*.tax_id' => 'required',
-        ]);
-
         $details = collect($request->details)->transform(function ($detail) {
             $detail['total_value'] = $detail['quantity'] * $detail['unit_value'];
             if ($detail['tax_id'] == 1) {

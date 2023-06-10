@@ -10,21 +10,18 @@
                                 class="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline"
                                 name="order" id="select_order">
                                 <option value="option_select" disabled selected>Seleccione Orden</option>
-                                @foreach($ord as $value)
+                                @foreach($orders as $value)
                                     <option value="{{ $value->id }}">{{  $value->id}}</option>
                                 @endforeach
                             </select>
                         </div>
-                        {{--                        <div class="flex justify-center ">--}}
-                        {{--                            <button type="submit" name="action" value="save"--}}
-                        {{--                                    class="text-white m-3 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ">--}}
-                        {{--                                <i class="fas fa-search"> </i> Buscar--}}
-                        {{--                            </button>--}}
-                        {{--                            <button type="submit" name="action" value ="excel"--}}
-                        {{--                                    class="text-white m-3 bg-gradient-to-r from-emerald-500 via-emerald-600 to-emerald-700 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ">--}}
-                        {{--                                <i class="fas fa-file-excel"></i>   Exportar Excel--}}
-                        {{--                            </button>--}}
-                        {{--                        </div>--}}
+                        <div class="flex justify-center ">
+
+                            <button type="submit" name="action" value="excel"
+                                    class="text-white m-3 bg-gradient-to-r from-emerald-500 via-emerald-600 to-emerald-700 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ">
+                                <i class="fas fa-file-excel"></i> Exportar Excel
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -79,12 +76,13 @@
 
             function onSelectOrderChange() {
                 let id = $(this).val();
+                $('#table_bodyT').empty();
+                $('#table_footT').empty();
+
                 $.get('/api/fetch-products/' + id + '/products', function (data) {
                     const dta = data.purchase[0].details;
                     let total = [];
                     for (const element of dta) {
-                        // console.log(element);
-                        //  total += parseInt(element.total_value);
                         total += element.total_value + ',';
                         $('#table_bodyT').append(
                             $('<tr>').append(
@@ -106,9 +104,8 @@
                     let result = total.split(',').map(Number);
                     let total1 = result.reduce((a, b) => a + b, 0);
                     let cantidad = data.products[0].pivot.quantity;
-
                     let total_unit = total1 / cantidad;
-                    let utilidad = total1 - data.products[0].pivot.total_price;
+                    let utilidad = data.products[0].pivot.total_price - total1;
                     console.log(total_unit);
                     $('#table_footT').append(
                         $('<tr>').append(
@@ -179,16 +176,17 @@
                         '<label class="block mb-1" for="product">Cantidad</label>' +
                         '<input  type="text" value="' + data.products[0].pivot.quantity + '" class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" disabled>' +
                         '</div>' +
-                        '<div class="w-full px-2 md:w-1/6 sm:w-1/2" >' +
+                        '<div class="w-full px-2 md:w-1/5 sm:w-1/2" >' +
                         '<label class="block mb-1" for="product">Precio Unitario Acordado</label>' +
                         '<input  type="text" value="' + data.products[0].price + '" class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" disabled>' +
                         '</div>' +
-                        '<div class="w-full px-2 md:w-1/6  sm:w-1/2" >' +
+                        '<div class="w-full px-2 md:w-1/5 sm:w-1/2" >' +
                         '<label class="block mb-1" for="product">Precio Total</label>' +
                         '<input  type="text" value="' + data.products[0].pivot.total_price + '" class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" disabled>' +
                         '</div>';
                     $("#product").html(html_product);
                 });
+                // Almacena los datos generados en la sesión
             }
         </script>
     @endsection

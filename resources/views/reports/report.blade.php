@@ -73,7 +73,8 @@
                                         </tr>
                                         </thead>
                                         <tbody class="bg-white divide-y divide-gray-200">
-                                        @foreach($reports['report'] as $purchase_detail)
+                                        {{-- @foreach($reports['report'] as $purchase_detail)--}}
+                                        @foreach($reports['purchaseDetails'] as $purchase_detail)
                                             <tr>
                                                 <td class=" px-4 py-2 whitespace-no-wrap border-b border-gray-200">
                                                     <div class="text-sm text-center leading-5 text-gray-500">
@@ -153,7 +154,7 @@
                                             <td></td>
                                             <td id="total">
                                                 <div class="text-sm text-center leading-5 text-red-500">
-                                                    {{$reports['sum_reports']}}
+                                                    {{$reports['sumReports']}}
                                                 </div>
                                             </td>
                                         </tr>

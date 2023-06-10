@@ -8,45 +8,32 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\Sale;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
+use App\Http\Requests\CreateOrderRequest;
 
 class OrderController extends Controller
 {
-     public function index(): Factory|View|Application
-     {
-         $orders = Order::with('products', 'client', 'sale')->paginate(10);
-         return view('orders.index', compact('orders'));
-     }
+    public function index(): View
+    {
+        $orders = Order::with('products', 'client', 'sale')->paginate(10);
+        return view('orders.index', compact('orders'));
+    }
 
-    public function create(): Factory|View|Application
+    public function create(): View
     {
         $details = Detail::all();
         $sales = Sale::all();
-        return view('orders.create', compact('details','sales'));
+        return view('orders.create', compact('details', 'sales'));
     }
 
     /**
      * @throws ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(CreateOrderRequest $request): RedirectResponse
     {
-        $this->validate($request, [
-            'name' => 'required|string|max:100',
-            'ruc' => 'required|string|max:13',
-            'date_start' => 'required|date_format:Y-m-d',
-            'date_end' => 'required|date_format:Y-m-d',
-            'sale' => 'required',
-            'products.*.product' => 'required|string|max:150',
-            'products.*.price' => 'required',
-            'products.*.quantity' => 'required|numeric',
-        ]);
-
         $data = $request->except('products');
         $data['state'] = 1;
         $cliente = Client::create($data);
@@ -64,7 +51,7 @@ class OrderController extends Controller
         return redirect()->route('orders.index')->with('success', 'Ordenes Creadas Correctamente');
     }
 
-    public function show($id): Factory|View|Application
+    public function show($id): View
     {
         $orders = Order::with('products')->findOrFail($id);
         return view('orders.show', compact('orders'));
