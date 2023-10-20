@@ -106,7 +106,7 @@
                     let cantidad = data.products[0].pivot.quantity;
                     let total_unit = total1 / cantidad;
                     let utilidad = data.products[0].pivot.total_price - total1;
-                    console.log(total_unit);
+                    // console.log(total_unit);
                     $('#table_footT').append(
                         $('<tr>').append(
                             $('<td>').append(

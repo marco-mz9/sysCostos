@@ -5,14 +5,10 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+
+    public function up():void
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('orders', static function (Blueprint $table) {
             $table->id();
             $table->foreignId('client_id')->constrained();
             $table->foreignId('sale_id')->constrained();
@@ -22,12 +18,7 @@ return new class extends Migration {
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+    public function down():void
     {
         Schema::dropIfExists('orders');
     }

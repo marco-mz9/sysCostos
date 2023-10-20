@@ -15,9 +15,6 @@ class ReportsExport implements FromView
         $this->reports = $reports;
     }
 
-    /**
-     * @return View
-     */
     public function view(): View
     {
         return view('reports.excel', ['reports' => $this->reports]);

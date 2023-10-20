@@ -29,7 +29,7 @@ class SaleController extends Controller
         $data = $this->validate($request, [
             'description' => 'required',
         ]);
-        $sale = Sale::create($data);
+        Sale::create($data);
 //        notify()->success('Creado Correctamente ⚡️','Pedido '.$sale->id);
         return redirect()->route('sales.index')->with('success', 'Pedido Creado Correctamente');
     }

@@ -17,13 +17,11 @@ Route::group(['middleware' => ['auth', 'verified']], static function () {
 
     Route::resource('sales', SaleController::class)->only(['index', 'store', 'create']);
 
-
     Route::resource('orders', OrderController::class)->except(['edit', 'destroy', 'update']);
     Route::get('orders/{order}/pdf', [OrderController::class, 'pdfOrder'])->name('orders.pdfOrder');
 
     Route::get('reportsOrder', [ReportController::class, 'orderP'])->name('report.order');
     Route::get('/api/fetch-products/{id}/products', [ReportController::class, 'fetchProduct']);
-
 
 //    Route::get('excelOrder', [ReportController::class, 'exportExcelO'])->name('reports.excel2');
     Route::get('reports', [ReportController::class, 'index'])->name('reports.index');

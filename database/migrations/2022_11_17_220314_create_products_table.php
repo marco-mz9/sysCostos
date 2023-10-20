@@ -5,14 +5,10 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
-    /**
-     * Run the migrations.
-     *change satate for status
-     * @return void
-     */
-    public function up()
+
+    public function up():void
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('products', static function (Blueprint $table) {
             $table->id();
             $table->string('product');
             $table->double('price');
@@ -21,12 +17,7 @@ return new class extends Migration {
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+    public function down():void
     {
         Schema::dropIfExists('products');
     }
